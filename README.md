@@ -23,6 +23,7 @@ For CircuitPython on Raspberry Pico.
 
 ## Requirement and notes
 
+* Read the script, and generate your payload, change the URL to your apk file. (The url is truncated to work with my layout, i need to fix it)
 * Actually, you should specify the device used at the beginning of the script.
 * You should allow for unknown source to install the APK.
 * Chrome should be the default browser used "every time". (To avoid asking which browser open once we use the keyboard shortcut to open the browser)
