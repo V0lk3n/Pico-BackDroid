@@ -36,16 +36,13 @@ keyboard.press(Keycode.GUI, Keycode.B)
 keyboard.release_all()
 time.sleep(0.5)
 
+# Open a new tab to reach the google search home page
+keyboard.press(Keycode.CONTROL, Keycode.T)
+keyboard.release_all()
+time.sleep(1.5)
+
 # Reach the search bar
-# Note - The App "Google" shouln't be present, otherwise it can add the micro in the search bar and our code will be truncated.
-# Note - No Google Account should by syncronized with chrome, or it will add the user account icon and our code will be truncated.
-keyboard.press(Keycode.UP_ARROW)
-keyboard.release_all()
-time.sleep(0.5)
-keyboard.press(Keycode.UP_ARROW)
-keyboard.release_all()
-time.sleep(0.5)
-keyboard.press(Keycode.TAB)
+keyboard.press(Keycode.CONTROL, Keycode.L)
 keyboard.release_all()
 time.sleep(0.5)
 
