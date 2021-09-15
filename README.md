@@ -17,7 +17,7 @@ For CircuitPython on Raspberry Pico.
 
 3. Download the <a href="https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/tag/20210914">adafruit-circuitpython-bundle-6.x-mpy-YYYYMMDD.zip</a> library, unzip it, and copy past the adafruit.hid directory inside CIRCUITPY lib folder.
 
-4. Add you'r keyboard layout if needed.
+4. Add you'r keyboard layout if needed. Reffer to <a href="https://github.com/dbisu/pico-ducky/issues/10">this issue</a> of Pico-Ducky GitHub Repository.
 
 5. Download <a href="https://raw.githubusercontent.com/V0lk3n/Pico-BackDroid/main/pico-backdroid.py">Pico-BackDroid script</a>, rename it code.py and save it inside the CIRCUITPY drive to overwrite the default one.
 
