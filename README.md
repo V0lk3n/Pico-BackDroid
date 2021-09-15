@@ -1,7 +1,7 @@
 # Pico-BackDroid
 
-Pico-BackDroid is a python script that install an APK payload on android with HID injection.
-For CircuitPython on Raspberry Pico.
+Pico-BackDroid is a python script that install an APK payload on an android device with HID injection.
+For CircuitPython on Raspberry Pi Pico.
 
 ## Tested Devices
 
@@ -11,16 +11,16 @@ For CircuitPython on Raspberry Pico.
 
 ## Installation
 
-1. Plug into you'r computer the raspberry pico. A Media drive called ```RPI-RP2``` should be mounted.
+1. Plug into you'r computer the Raspberry Pi Pico. A Media drive called ```RPI-RP2``` should appear.
 
-2. Download <a href="https://circuitpython.org/board/raspberry_pi_pico/">CircuitPython</a>, unzip the archive and drag and drop inside the media drive the ```.uf2``` file into it.
+2. Download <a href="https://circuitpython.org/board/raspberry_pi_pico/">CircuitPython</a>, unzip it, drag and drop inside the media drive the unzipped ```.uf2``` file into it.
    That should reboot the raspberry pico, and mount it this time as ```CIRCUITPY```.
 
-3. Download the <a href="https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/tag/20210914">adafruit-circuitpython-bundle-6.x-mpy-YYYYMMDD.zip</a> library, unzip it, and copy past the adafruit.hid directory inside CIRCUITPY lib folder.
+3. Download the <a href="https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/tag/20210914">adafruit-circuitpython-bundle-6.x-mpy-YYYYMMDD.zip</a> library, unzip it, and copy past the ```adafruit.hid``` directory inside ```CIRCUITPY``` ```lib``` folder.
 
 4. Add you'r keyboard layout if needed (Actually setup on Swiss French "QWERTZ" Keyboard Layout). Reffer to <a href="https://github.com/dbisu/pico-ducky/issues/10">this issue</a> of Pico-Ducky GitHub Repository.
 
-5. Download <a href="https://raw.githubusercontent.com/V0lk3n/Pico-BackDroid/main/pico-backdroid.py">Pico-BackDroid script</a>, rename it code.py and save it inside the CIRCUITPY drive to overwrite the default one.
+5. Download <a href="https://raw.githubusercontent.com/V0lk3n/Pico-BackDroid/main/pico-backdroid.py">Pico-BackDroid script</a>, rename it ```code.py``` and save it inside the ```CIRCUITPY``` drive to overwrite the default one.
 
 ## Requirement and notes
 
