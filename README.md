@@ -27,6 +27,7 @@ For CircuitPython on Raspberry Pico.
 * You should allow for unknown source to install the APK.
 * Chrome should be the default browser used "every time". (To avoid asking which browser open once we use the keyboard shortcut to open the browser)
 * "Google" app shouldn't be installed, otherwise depending of the configuration, the micro will appear in the google search bar in chrome and this will truncate our code.
+* Once chrome is open, it should lead to the home page and not to another tab.
 * Depending on the Play Protect Warning, the code can be truncated. 
 * Note that the code is actively under development, and i'm working into news features.
 
