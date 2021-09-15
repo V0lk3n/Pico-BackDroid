@@ -7,6 +7,7 @@ For CircuitPython on Raspberry Pico.
 
 * One Plus 7 Pro - Oxygen Os 11 - Chrome
 * Samsung Galaxy S7 Edge - Android 10 - Chrome
+* Test it on your device, and make pull request!
 
 ## Installation
 
