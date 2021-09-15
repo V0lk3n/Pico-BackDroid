@@ -13,7 +13,7 @@ For CircuitPython on Raspberry Pi Pico.
 
 1. Plug into you'r computer the Raspberry Pi Pico. A Media drive called ```RPI-RP2``` should appear.
 
-2. Download <a href="https://circuitpython.org/board/raspberry_pi_pico/">CircuitPython</a>, unzip it, drag and drop inside the media drive the unzipped ```.uf2``` file into it.
+2. Download <a href="https://circuitpython.org/board/raspberry_pi_pico/">CircuitPython</a>, drag and drop inside the media drive the downloaded ```.uf2``` file into it.
    That should reboot the raspberry pico, and mount it this time as ```CIRCUITPY```.
 
 3. Download the <a href="https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases/tag/20210914">adafruit-circuitpython-bundle-6.x-mpy-YYYYMMDD.zip</a> library, unzip it, and copy past the ```adafruit.hid``` directory inside ```CIRCUITPY``` ```lib``` folder.
