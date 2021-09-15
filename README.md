@@ -24,12 +24,13 @@ For CircuitPython on Raspberry Pi Pico.
 
 ## Requirement and notes
 
-* Read the script, and generate your payload, change the URL to your apk file. (The url is truncated to work with my layout, i need to fix it)
+* Read the script, and generate your payload, change the URL to your apk file. (The url is truncated to work with my layout in my case, i need to fix it)
 * Actually, you should specify the device used at the beginning of the script.
 * You should allow for unknown source to install the APK.
 * Chrome should be the default browser used "every time". (To avoid asking which browser open once we use the keyboard shortcut to open the browser)
 * Depending on the Play Protect Warning, the code can be truncated. 
-* Note that the code is actively under development, and i'm working into news features.
+
+* <b>Note that the code is actively under development, and i'm working into news features.</a>
 
 ## PoC - Demo
 
