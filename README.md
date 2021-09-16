@@ -5,9 +5,18 @@ For CircuitPython on Raspberry Pi Pico.
 
 ## Tested Devices
 
-* One Plus 7 Pro - Oxygen Os 11 - Chrome
-* Samsung Galaxy S7 Edge - Android 10 - Chrome
+### One Plus
+* One Plus 7 Pro - Oxygen Os 11
+* One Plus 8 Pro - Oxygen Os 11 - Unstable
+
+### Samsung
+* Samsung Galaxy S7 Edge - Android 10
+
+### Note
 * Test it on your device, and make pull request!
+
+## Tested Keyboard Layout
+* Swiss France - QWERTZ
 
 ## Installation
 
