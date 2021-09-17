@@ -10,7 +10,7 @@ from keycode_win_sf import Keycode
 
 # Select the device
 OnePlusDevice = False
-device = "SGS9E"
+device = "OP7P"
 OnePlus = ["OP7P", "OP8P"]
 
 SamsungDevice = True
