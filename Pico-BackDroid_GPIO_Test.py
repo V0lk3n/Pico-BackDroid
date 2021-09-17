@@ -11,9 +11,6 @@ from keycode_win_sf import Keycode
 keyboard = Keyboard(usb_hid.devices)
 layout = KeyboardLayout(keyboard)
 
-# In case of Mouse HID Injection
-# mouse = Mouse(usb_hid.devices)
-
 # Load the default LED of the Raspberry Pi Pico
 led = digitalio.DigitalInOut(board.LED)
 led.direction = digitalio.Direction.OUTPUT
@@ -21,7 +18,6 @@ led.direction = digitalio.Direction.OUTPUT
 # Start the LED to show that the script is running.
 led.value = True
 time.sleep(3.0)
-
 
 # check GP0 for setup mode
 # see setup mode for instructions of PicoDucky GitHub Project thanks to them for this part of code.
