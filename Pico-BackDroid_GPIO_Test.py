@@ -3,7 +3,6 @@ import digitalio
 import usb_hid
 import board
 
-# from adafruit_hid.mouse import Mouse
 from adafruit_hid.keyboard import Keyboard
 from keyboard_layout_win_sf import KeyboardLayout
 from keycode_win_sf import Keycode
@@ -25,14 +24,14 @@ time.sleep(3.0)
 
 
 # check GP0 for setup mode
-# see setup mode for instructions
+# see setup mode for instructions of PicoDucky GitHub Project thanks to them for this part of code.
 progStatus = False
 progStatusPin = digitalio.DigitalInOut(board.GP0)
 progStatusPin.switch_to_input(pull=digitalio.Pull.UP)
 progStatus = not progStatusPin.value
 defaultDelay = 0
 if progStatus is False:
-    # Select the device
+    # Check GP4 to select OnePlus7Pro Device
     OnePlusStatus = False
     OnePlusStatusPin = digitalio.DigitalInOut(board.GP4)
     OnePlusStatusPin.switch_to_input(pull=digitalio.Pull.UP)
@@ -45,6 +44,7 @@ if progStatus is False:
     else:
         OnePlusDevice = False
 
+    # Check GP5 to Select Samsung Galaxy S9 Device
     SamsungStatus = False
     SamsungStatusPin = digitalio.DigitalInOut(board.GP5)
     SamsungStatusPin.switch_to_input(pull=digitalio.Pull.UP)
@@ -56,9 +56,6 @@ if progStatus is False:
         SamsungDevice = True
     else:
         SamsungDevice = False
-    # Detect the device manufacturer and store it inside a variable
-    # device = os.popen('getprop ro.product.manufacturer').read()
-    # time.sleep(0.5)
 
     # Open browser with default shortcut
     keyboard.press(Keycode.GUI, Keycode.B)
