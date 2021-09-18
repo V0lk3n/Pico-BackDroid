@@ -15,36 +15,51 @@ layout = KeyboardLayout(keyboard)
 led = digitalio.DigitalInOut(board.LED)
 led.direction = digitalio.Direction.OUTPUT
 
-# Start the LED to show that the script is running.
-led.value = True
-time.sleep(3.0)
-
-# check GP0 for setup mode
+# While wait if no pin connected
 progStatus = False
 progStatusPin = digitalio.DigitalInOut(board.GP0)
 progStatusPin.switch_to_input(pull=digitalio.Pull.UP)
 progStatus = not progStatusPin.value
-defaultDelay = 0
-if progStatus is False:
-    # Check GP4 to select OnePlus7Pro Device
-    OnePlusStatus = False
-    OnePlusStatusPin = digitalio.DigitalInOut(board.GP4)
+
+OnePlusStatus = False
+OnePlusStatusPin = digitalio.DigitalInOut(board.GP4)
+OnePlusStatusPin.switch_to_input(pull=digitalio.Pull.UP)
+OnePlusStatus = not OnePlusStatusPin.value
+
+SamsungStatus = False
+SamsungStatusPin = digitalio.DigitalInOut(board.GP5)
+SamsungStatusPin.switch_to_input(pull=digitalio.Pull.UP)
+SamsungStatus = not SamsungStatusPin.value
+
+while True:
     OnePlusStatusPin.switch_to_input(pull=digitalio.Pull.UP)
     OnePlusStatus = not OnePlusStatusPin.value
-    defaultDelay = 0
+    progStatusPin.switch_to_input(pull=digitalio.Pull.UP)
+    progStatus = not progStatusPin.value
+    SamsungStatusPin.switch_to_input(pull=digitalio.Pull.UP)
+    SamsungStatus = not SamsungStatusPin.value
+    led.value = True
+    time.sleep(0.5)
+    led.value = False
+    time.sleep(0.5)
+    if SamsungStatus or OnePlusStatus or progStatus is True:
+        break
+
+# Start the LED to show that the script is running.
+led.value = True
+time.sleep(3.0)
+
+# Check GP0 for debug
+if progStatus is False:
+    # Check GP4 to select OnePlus7Pro Device
     if OnePlusStatus is True:
         device = "OP7P"
         OnePlus = ["OP7P", "OP8P"]
         OnePlusDevice = True
     else:
         OnePlusDevice = False
-    
-    # Check GP5 to Select Samsung Galaxy S9 Device
-    SamsungStatus = False
-    SamsungStatusPin = digitalio.DigitalInOut(board.GP5)
-    SamsungStatusPin.switch_to_input(pull=digitalio.Pull.UP)
-    SamsungStatus = not SamsungStatusPin.value
-    defaultDelay = 0
+
+    # Check GP6 to Select Samsung Galaxy S9 Device
     if SamsungStatus is True:
         device = "SGS9E"
         Samsung = ["SGS9E"]
