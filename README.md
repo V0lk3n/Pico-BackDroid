@@ -15,9 +15,6 @@ Use it ethicaly!
 ### Samsung
 * Samsung Galaxy S7 Edge - Android 10
 
-### Note
-* Test it on your device, and make pull request!
-
 ## Tested Keyboard Layout
 * Swiss France - QWERTZ
 
