@@ -1,7 +1,10 @@
 # Pico-BackDroid
 
-Pico-BackDroid is a python script that install an APK payload on an android device with HID injection.
-For CircuitPython on Raspberry Pi Pico.
+Pico-BackDroid is a python script that install an APK payload on an android device with HID injection. For CircuitPython on Raspberry Pi Pico.
+
+I created this project for fun, and up my knowledges. After getting fun with Pico-Ducky, I decided to make a project myself against Android.
+
+Use it ethicaly!
 
 ## Tested Devices
 
@@ -11,7 +14,6 @@ For CircuitPython on Raspberry Pi Pico.
 
 ### Samsung
 * Samsung Galaxy S7 Edge - Android 10
-Test <a href="https://play.google.com/store/">playstore</a>
 
 ### Note
 * Test it on your device, and make pull request!
@@ -34,13 +36,19 @@ Test <a href="https://play.google.com/store/">playstore</a>
 
 ## Requirement and notes
 
-* Read the script, and generate your payload, change the URL to your apk file. (The url is truncated to work with my layout in my case, i need to fix it)
-* Actually, you should specify the device used at the beginning of the script.
-* You should allow for unknown source to install the APK.
-* Chrome should be the default browser used "every time". (To avoid asking which browser open once we use the keyboard shortcut to open the browser)
-* Depending on the Play Protect Warning, the code can be truncated. 
+1. You should specify the device used at the beginning of the script. (Working on a PIN version where it pick the device depending which pin is connected)
+2. Generate your payload, change the URL into the script to your apk file.
+3. You should allow for unknown source before runing it against the target device.
+4. Chrome should be the default browser used everywhere to avoid to chose which browser open.
 
-* <b>Note that the code is actively under development, and i'm working into news features.</a>
+## Fix and Todo
+
+* Fix keyboard layout which is alway QWERTY in android device.
+* Try to add OnePlus8 Device on the Pin version.
+* Try the Pin version using selector.
+* Create a Wiki.
+
+<b>Note that the code is actively under development, and i'm working into news features.</a>
 
 ## PoC - Demo
 
