@@ -7,6 +7,61 @@ from adafruit_hid.keyboard import Keyboard
 from keyboard_layout_win_sf import KeyboardLayout
 from keycode_win_sf import Keycode
 
+# Add keystroke Pico-Ducky Project
+duckyCommands = ["WINDOWS", "GUI", "APP", "MENU", "SHIFT", "ALT", "CONTROL", "CTRL", "DOWNARROW", "DOWN",
+"LEFTARROW", "LEFT", "RIGHTARROW", "RIGHT", "UPARROW", "UP", "BREAK", "PAUSE", "CAPSLOCK", "DELETE", "END",
+"ESC", "ESCAPE", "HOME", "INSERT", "NUMLOCK", "PAGEUP", "PAGEDOWN", "PRINTSCREEN", "SCROLLLOCK", "SPACE",
+"TAB", "ENTER", " a", " b", " c", " d", " e", " f", " g", " h", " i", " j", " k", " l", " m", " n", " o", " p", " q", " r", " s", " t",
+" u", " v", " w", " x", " y", " z", " A", " B", " C", " D", " E", " F", " G", " H", " I", " J", " K", " L", " M", " N", " O", " P",
+" Q", " R", " S", " T", " U", " V", " W", " X", " Y", " Z", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12"]
+
+keycodeCommands = [Keycode.WINDOWS, Keycode.GUI, Keycode.APPLICATION, Keycode.APPLICATION, Keycode.SHIFT, Keycode.ALT, Keycode.CONTROL,
+Keycode.CONTROL, Keycode.DOWN_ARROW, Keycode.DOWN_ARROW ,Keycode.LEFT_ARROW, Keycode.LEFT_ARROW, Keycode.RIGHT_ARROW, Keycode.RIGHT_ARROW,
+Keycode.UP_ARROW, Keycode.UP_ARROW, Keycode.PAUSE, Keycode.PAUSE, Keycode.CAPS_LOCK, Keycode.DELETE, Keycode.END, Keycode.ESCAPE,
+Keycode.ESCAPE, Keycode.HOME, Keycode.INSERT, Keycode.KEYPAD_NUMLOCK, Keycode.PAGE_UP, Keycode.PAGE_DOWN, Keycode.PRINT_SCREEN,
+Keycode.SCROLL_LOCK, Keycode.SPACE, Keycode.TAB, Keycode.ENTER, Keycode.A, Keycode.B, Keycode.C, Keycode.D, Keycode.E, Keycode.F, Keycode.G,
+Keycode.H, Keycode.I, Keycode.J, Keycode.K, Keycode.L, Keycode.M, Keycode.N, Keycode.O, Keycode.P, Keycode.Q, Keycode.R, Keycode.S, Keycode.T,
+Keycode.U, Keycode.V, Keycode.W, Keycode.X, Keycode.Y, Keycode.Z, Keycode.A, Keycode.B, Keycode.C, Keycode.D, Keycode.E, Keycode.F,
+Keycode.G, Keycode.H, Keycode.I, Keycode.J, Keycode.K, Keycode.L, Keycode.M, Keycode.N, Keycode.O, Keycode.P,
+Keycode.Q, Keycode.R, Keycode.S, Keycode.T, Keycode.U, Keycode.V, Keycode.W, Keycode.X, Keycode.Y, Keycode.Z,
+Keycode.F1, Keycode.F2, Keycode.F3, Keycode.F4, Keycode.F5, Keycode.F6, Keycode.F7, Keycode.F8, Keycode.F9,
+Keycode.F10, Keycode.F11, Keycode.F12]
+
+# Add function Pico-Ducky Project
+def convertLine(line):
+    newline = []
+    print(line)
+    for j in range(len(keycodeCommands)):
+		    if line.find(duckyCommands[j]) != -1:
+		    	newline.append(keycodeCommands[j])
+    print(newline)
+    return newline
+
+def runScriptLine(line):
+    for k in line:
+        keyboard.press(k)
+    keyboard.release_all()
+
+def sendString(line):
+    layout.write(line)
+
+def parseLine(line):
+    if(line[0:3] == "REM"):
+        # ignore ducky script comments
+        pass
+    elif(line[0:5] == "DELAY"):
+        time.sleep(float(line[6:])/1000)
+    elif(line[0:6] == "STRING"):
+        sendString(line[7:])
+    elif(line[0:13] == "DEFAULT_DELAY"):
+        defaultDelay = int(line[14:]) * 10
+    elif(line[0:12] == "DEFAULTDELAY"):
+        defaultDelay = int(line[13:]) * 10
+    else:
+        newScriptLine = convertLine(line)
+        runScriptLine(newScriptLine)
+
+
 # Load Raspberry Pi Pico as HID Keyboard device
 keyboard = Keyboard(usb_hid.devices)
 layout = KeyboardLayout(keyboard)
@@ -20,6 +75,7 @@ progStatus = False
 progStatusPin = digitalio.DigitalInOut(board.GP0)
 progStatusPin.switch_to_input(pull=digitalio.Pull.UP)
 progStatus = not progStatusPin.value
+defaultDelay = 0
 
 OnePlusStatus = False
 OnePlusStatusPin = digitalio.DigitalInOut(board.GP4)
@@ -31,25 +87,32 @@ SamsungStatusPin = digitalio.DigitalInOut(board.GP5)
 SamsungStatusPin.switch_to_input(pull=digitalio.Pull.UP)
 SamsungStatus = not SamsungStatusPin.value
 
+duckyStatus = False
+duckyStatusPin = digitalio.DigitalInOut(board.GP6)
+duckyStatusPin.switch_to_input(pull=digitalio.Pull.UP)
+duckyStatus = not duckyStatusPin.value
+
 while True:
-    OnePlusStatusPin.switch_to_input(pull=digitalio.Pull.UP)
-    OnePlusStatus = not OnePlusStatusPin.value
     progStatusPin.switch_to_input(pull=digitalio.Pull.UP)
     progStatus = not progStatusPin.value
+    OnePlusStatusPin.switch_to_input(pull=digitalio.Pull.UP)
+    OnePlusStatus = not OnePlusStatusPin.value
     SamsungStatusPin.switch_to_input(pull=digitalio.Pull.UP)
     SamsungStatus = not SamsungStatusPin.value
+    duckyStatusPin.switch_to_input(pull=digitalio.Pull.UP)
+    duckyStatus = not duckyStatusPin.value
     led.value = True
     time.sleep(0.5)
     led.value = False
     time.sleep(0.5)
-    if SamsungStatus or OnePlusStatus or progStatus is True:
+    if SamsungStatus or OnePlusStatus or progStatus or duckyStatus is True:
         break
 
 # Start the LED to show that the script is running.
 led.value = True
 time.sleep(3.0)
 
-# Check GP0 for debug
+# Check GP0 for debug mode
 if progStatus is False:
     # Check GP4 to select OnePlus7Pro Device
     if OnePlusStatus is True:
@@ -59,13 +122,35 @@ if progStatus is False:
     else:
         OnePlusDevice = False
 
-    # Check GP6 to Select Samsung Galaxy S9 Device
+    # Check GP5 to Select Samsung Galaxy S9 Device
     if SamsungStatus is True:
         device = "SGS9E"
         Samsung = ["SGS9E"]
         SamsungDevice = True
     else:
         SamsungDevice = False
+
+    # Check GP6 to Select Pico-Ducky Project
+    if duckyStatus is True:
+        duckyScriptPath = "payload.dd"
+        f = open(duckyScriptPath,"r",encoding='utf-8')
+        print("Running payload.dd")
+        previousLine = ""
+        duckyScript = f.readlines()
+        for line in duckyScript:
+            line = line.rstrip()
+            if(line[0:6] == "REPEAT"):
+                for i in range(int(line[7:])):
+                    #repeat the last command
+                    parseLine(previousLine)
+                    time.sleep(float(defaultDelay)/1000)
+            else:
+                parseLine(line)
+                previousLine = line
+            time.sleep(float(defaultDelay)/1000)
+        print("done")
+        quit
+
 
     # Open browser with default shortcut
     keyboard.press(Keycode.GUI, Keycode.B)
