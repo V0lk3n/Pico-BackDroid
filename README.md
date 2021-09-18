@@ -11,6 +11,7 @@ For CircuitPython on Raspberry Pi Pico.
 
 ### Samsung
 * Samsung Galaxy S7 Edge - Android 10
+Test <a href="https://play.google.com/settings">playstore</a>
 
 ### Note
 * Test it on your device, and make pull request!
