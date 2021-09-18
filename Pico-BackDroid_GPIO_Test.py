@@ -20,7 +20,6 @@ led.value = True
 time.sleep(3.0)
 
 # check GP0 for setup mode
-# see setup mode for instructions of PicoDucky GitHub Project thanks to them for this part of code.
 progStatus = False
 progStatusPin = digitalio.DigitalInOut(board.GP0)
 progStatusPin.switch_to_input(pull=digitalio.Pull.UP)
@@ -40,22 +39,9 @@ if progStatus is False:
     else:
         OnePlusDevice = False
     
-    # Check GP5
-    OnePlus8Status = False
-    OnePlus8StatusPin = digitalio.DigitalInOut(board.GP5)
-    OnePlus8StatusPin.switch_to_input(pull=digitalio.Pull.UP)
-    OnePlus8Status = not OnePlus8StatusPin.value
-    defaultDelay = 0
-    if OnePlus8Status is True:
-        device = "OP8P"
-        OnePlus = ["OP7P", "OP8P"]
-        OnePlusDevice = True
-    else:
-        OnePlusDevice = False
-
-    # Check GP6 to Select Samsung Galaxy S9 Device
+    # Check GP5 to Select Samsung Galaxy S9 Device
     SamsungStatus = False
-    SamsungStatusPin = digitalio.DigitalInOut(board.GP6)
+    SamsungStatusPin = digitalio.DigitalInOut(board.GP5)
     SamsungStatusPin.switch_to_input(pull=digitalio.Pull.UP)
     SamsungStatus = not SamsungStatusPin.value
     defaultDelay = 0
