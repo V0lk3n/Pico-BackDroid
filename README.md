@@ -10,6 +10,13 @@ Use it ethicaly!
 
 Refere to <a href="https://github.com/V0lk3n/Pico-BackDroid/wiki">the wiki</a> to learn how to use it!
 
+# Versions
+
+Actually there are two version.
+
+- The first one is the basic one, where you need to specify which device you target inside the code before runing it.
+- The second code is the GPO Pins version, here you need jumper, and connect specified pins to letting know the pico which device you want to target. The goal is to add a selector at the "end" of the project.
+
 ## PoC - Demo
 
 Not released yet.
